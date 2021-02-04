@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+
+            <h3> Which is the most expensive car in the world?</h3>
+
+
+            <p id="veredict" class="hide"> CORRECT!</p>
+            <p id="veredict_2" class="hide"> INCORRECT!</p>
+
+            <button  id= "correct" class="main_butt opt1"> Bugatti La Voiture Noire</button>
+
+            <button id= "incorrect" class="main_butt opt2">  Pagani Zonda HP Barchetta</button>
+
+            <button  id= "incorrect" class="main_butt opt3"> Rolls Royce Sweptail</button>
+
+            <button  id= "incorrect" class="main_butt opt4"> Lamborghini Veneno Roadster</button>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+
+          <h3> Please tell me the date in which the car company Mercedes Benz was found?</h3>
+
+          <p id="veredict_3" class="hide"> INCORRECT!</p>
+          <p id="veredict_4" class="hide"> CORRECT!</p>
+
+
+
+          <form onsubmit="answer()" class="question">
+            <input id="value" type="number" >
+            <input type="submit">
+          </form>
+
+       </div>
+
+
+    <script>
+
+        let button = document.querySelector("#correct");
+        let msg = document.querySelector("#veredict");
+        let button2 = document.querySelectorAll("#incorrect");
+        let msg1 = document.querySelector("#veredict_2");
+
+        function correct_answer(e) {
+          e.target.style.background = "green";
+          msg.classList.add("reveal");
+
+          setTimeout(() => {
+            msg.classList.remove("reveal");
+            e.target.style.background = "initial";
+          }, 3000);
+        }
+
+        function bad_answers(e) {
+          e.target.style.background = "red";
+          msg1.classList.add("reveal");
+
+          setTimeout(() => {
+            msg1.classList.remove("reveal");
+            e.target.style.background = "initial";
+          }, 3000);
+        }
+
+        button.addEventListener("click", (e) => correct_answer(e));
+        button2.forEach((one) =>
+          one.addEventListener("click", (e) => bad_answers(e))
+        );
+
+
+
+        let button3 = document.querySelector("#value");
+        let msg2 = document.querySelector("#veredict_4");
+        let msg3 = document.querySelector("#veredict_3");
+
+
+        function answer()
+          {
+            var answer = document.querySelector("#value").value;
+            var g_answer = 1926;
+
+            if (answer == g_answer)
+            {
+              msg2.classList.add("reveal");
+              button3.style.background="green";
+            }
+            else
+            {
+              msg3.classList.add("reveal");
+              button3.style.background="red";
+            }
+
+          }
+
+    </script>
+
+</body>
